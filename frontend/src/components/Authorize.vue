@@ -21,7 +21,7 @@
     <br>
     <v-divider></v-divider>
     <br>
-    <v-btn color="primary" @click="onClick">Grant permission</v-btn>
+    <v-btn class="confirm-btn" color="primary" @click="onClick">Grant permission</v-btn>
   </v-flex>
 </template>
 
@@ -43,7 +43,7 @@ export default {
   border-radius: 10px;
 }
 
-.v-btn {
+.v-btn.confirm_btn {
   border-radius: 20px !important;
   font-weight: bold !important;
 }
