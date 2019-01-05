@@ -69,7 +69,7 @@ export default {
         );
       } catch (e) {
         alert("Unexpected problem, please try again.");
-        this.$route.push("/");
+        this.$router.push("/");
       }
     },
     onSelectPlaylist: function(playlistId) {

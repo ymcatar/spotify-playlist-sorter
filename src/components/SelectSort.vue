@@ -136,7 +136,7 @@ export default {
         });
       } catch (e) {
         alert("Unexpected problem, please try again.");
-        this.$route.push("/");
+        this.$router.push("/");
       }
     },
     submit: async function() {
@@ -194,7 +194,7 @@ export default {
         this.updating = false;
       } catch (e) {
         alert("Unexpected problem, please try again.");
-        this.$route.push("/");
+        this.$router.push("/");
       }
     }
   },
