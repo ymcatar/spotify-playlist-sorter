@@ -70,12 +70,21 @@ export default {
     },
     getSongs: async function() {
       // get the playlist from Spotify
-      const playlist = (await axios.get(
+      let playlist = (playlist = (await axios.get(
         `https://api.spotify.com/v1/playlists/${this.playlistId}`,
         {
           headers: { Authorization: `Bearer ${this.accessToken}` }
         }
-      )).data;
+      )).data);
+      // get the tracks page by page
+      let tracks = playlist.tracks;
+      while (tracks.next) {
+        tracks = (await axios.get(tracks.next, {
+          headers: { Authorization: `Bearer ${this.accessToken}` }
+        })).data;
+        playlist.tracks.items = playlist.tracks.items.concat(tracks.items);
+      }
+      // done
       this.loaded = true;
       this.playlist = playlist;
       this.tracks = this.playlist.tracks.items.map((item, index) => {
