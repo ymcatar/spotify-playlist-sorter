@@ -1,6 +1,13 @@
 <template>
   <v-flex xs12 sm12 md12>
     <div class="display-3 font-weight-bold">Spotify Playlist Sorter</div>
+    <p>
+      Source code:
+      <a
+        href="https://github.com/ymcatar/spotify-playlist-sorter"
+        target="_new"
+      >https://github.com/ymcatar/spotify-playlist-sorter</a>
+    </p>
     <br>
     <v-divider></v-divider>
     <br>
@@ -10,15 +17,10 @@
         <a
           href="http://sortyourmusic.playlistmachinery.com/"
           target="_new"
-        >Sort Your Music</a>) to sort a Spotify list according to particular attributes, e.g. BPM, Length, Popularity. Just select playlist, and sort a playlist with musical attributes. The source code is available
-        <a
-          href="https://github.com/ymcatar/spotify-playlist-sorter"
-          target="_new"
-        >here</a>.
+        >Sort Your Music</a>) to sort a Spotify list according to particular attributes, e.g. BPM, Length, Popularity. Just select playlist, and sort a playlist with musical attributes.
       </p>
       <p>But first, access to your Spotify playlist data is needed. Note that the access token will be stored in your browser only.</p>
     </div>
-    <br>
     <v-divider></v-divider>
     <br>
     <v-btn class="confirm-btn" color="primary" @click="onClick">Grant permission</v-btn>
@@ -43,7 +45,7 @@ export default {
   border-radius: 10px;
 }
 
-.v-btn.confirm_btn {
+.v-btn.confirm-btn {
   border-radius: 20px !important;
   font-weight: bold !important;
 }
