@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs12 sm12 md12>
+  <v-flex xs12 sm8 md6>
     <div class="display-3 font-weight-bold">Spotify Playlist Sorter</div>
     <p>
       Source code:
