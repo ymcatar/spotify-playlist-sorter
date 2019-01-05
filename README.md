@@ -1,5 +1,13 @@
 # spotify-playlist-sorter
 
+A small script to sort a playlist using Echo nest attribute.
+
+To begin, clone the repo and add a `.env` file to the top directory, with the following content:
+
+```
+VUE_APP_SPOTIFY_CLIENT_KEY=<THE CLIENT ID OF YOUR SPOTIFY APP>
+```
+
 ## Project setup
 
 ```
