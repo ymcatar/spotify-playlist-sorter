@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <v-flex xs12 sm12 md12>
     <div v-if="!loaded">
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
     </div>
     <div v-if="loaded">
-      <div class="display-3 font-weight-thin">Select a playlist</div>
+      <div class="display-3 font-weight-bold">
+        <a @click="goBack">←</a>&nbsp;Select a playlist
+      </div>
       <br>
       <v-divider></v-divider>
       <br>
@@ -29,7 +31,7 @@
         </template>
       </v-list>
     </div>
-  </div>
+  </v-flex>
 </template>
 
 <script>
@@ -45,6 +47,9 @@ export default {
     await this.getPlaylists();
   },
   methods: {
+    goBack: function() {
+      this.$router.go(-1);
+    },
     getPlaylists: async function() {
       const playlists = (await axios.get(
         "https://api.spotify.com/v1/me/playlists",
@@ -54,10 +59,9 @@ export default {
       )).data.items;
       this.loaded = true;
       this.playlists = playlists;
-      console.log(this.playlists);
     },
     onSelectPlaylist: function(playlistId) {
-      alert(playlistId);
+      this.$router.push(`/sort/${playlistId}${window.location.hash}`);
     }
   },
   computed: {

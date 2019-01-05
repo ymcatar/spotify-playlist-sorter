@@ -9,12 +9,14 @@ import "./plugins/vuetify";
 import App from "./App.vue";
 import Authorize from "./components/Authorize";
 import SelectPlaylist from "./components/SelectPlaylist";
+import SelectSort from "./components/SelectSort";
 
 const router = new VueRouter({
   mode: "history",
   routes: [
     { path: "/", component: Authorize },
-    { path: "/playlist", component: SelectPlaylist }
+    { path: "/playlist", component: SelectPlaylist },
+    { path: "/sort/:playlistId", component: SelectSort }
   ]
 });
 

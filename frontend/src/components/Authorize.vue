@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <div class="display-3 font-weight-thin">Welcome</div>
+  <v-flex xs12 sm12 md12>
+    <div class="display-3 font-weight-bold">Spotify Playlist Sorter</div>
+    <br>
+    <v-divider></v-divider>
     <br>
     <div class="font-weight-medium">
       <p>
@@ -20,7 +22,7 @@
     <v-divider></v-divider>
     <br>
     <v-btn color="primary" @click="onClick">Grant permission</v-btn>
-  </div>
+  </v-flex>
 </template>
 
 <script>
@@ -29,7 +31,7 @@ export default {
     onClick: function() {
       window.location = `https://accounts.spotify.com/authorize?client_id=${
         process.env.VUE_APP_SPOTIFY_CLIENT_KEY
-      }&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fplaylist&scope=user-read-private%20user-read-email%20playlist-read-private%20playlist-read-collaborative&response_type=token&state=123`;
+      }&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fplaylist&scope=user-read-private%20user-read-email%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-private%20playlist-modify-public&response_type=token&state=123`;
     }
   }
 };
