@@ -50,22 +50,27 @@ export default {
       this.$router.push("/");
     },
     getPlaylists: async function() {
-      // get the current user name
-      const currentUser = (await axios.get(`https://api.spotify.com/v1/me`, {
-        headers: { Authorization: `Bearer ${this.accessToken}` }
-      })).data;
-      // get the list of playlists
-      const playlists = (await axios.get(
-        "https://api.spotify.com/v1/me/playlists",
-        {
+      try {
+        // get the current user name
+        const currentUser = (await axios.get(`https://api.spotify.com/v1/me`, {
           headers: { Authorization: `Bearer ${this.accessToken}` }
-        }
-      )).data.items;
-      this.loaded = true;
-      // only show the playlist to which the current user is the owner of
-      this.playlists = playlists.filter(
-        item => item.owner.id == currentUser.id
-      );
+        })).data;
+        // get the list of playlists
+        const playlists = (await axios.get(
+          "https://api.spotify.com/v1/me/playlists",
+          {
+            headers: { Authorization: `Bearer ${this.accessToken}` }
+          }
+        )).data.items;
+        this.loaded = true;
+        // only show the playlist to which the current user is the owner of
+        this.playlists = playlists.filter(
+          item => item.owner.id == currentUser.id
+        );
+      } catch (e) {
+        alert("Unexpected problem, please try again.");
+        this.$route.push("/");
+      }
     },
     onSelectPlaylist: function(playlistId) {
       this.$router.push(`/sort/${this.accessToken}/${playlistId}/`);
