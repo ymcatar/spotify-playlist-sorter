@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import queryString from "query-string";
 import axios from "axios";
 
 export default {
@@ -48,7 +47,7 @@ export default {
   },
   methods: {
     goBack: function() {
-      this.$router.go(-1);
+      this.$router.push("/");
     },
     getPlaylists: async function() {
       // get the current user name
@@ -69,12 +68,12 @@ export default {
       );
     },
     onSelectPlaylist: function(playlistId) {
-      this.$router.push(`/sort/${playlistId}${window.location.hash}`);
+      this.$router.push(`/sort/${this.accessToken}/${playlistId}/`);
     }
   },
   computed: {
     accessToken: function() {
-      return queryString.parse(window.location.hash).access_token;
+      return this.$route.params.accessToken;
     }
   }
 };

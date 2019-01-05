@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import queryString from "query-string";
+
 export default {
   methods: {
     onClick: function() {
@@ -35,7 +37,16 @@ export default {
         process.env.VUE_APP_SPOTIFY_CLIENT_KEY
       }&redirect_uri=${encodeURIComponent(
         window.location.origin + window.location.pathname
-      )}playlist&scope=user-read-private%20user-read-email%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-private%20playlist-modify-public&response_type=token&state=123`;
+      )}&scope=user-read-private%20user-read-email%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-private%20playlist-modify-public&response_type=token&state=123`;
+    }
+  },
+  mounted: function() {
+    // if the access token is found in URL, redirect to next step
+    const accessToken = queryString.parse(
+      window.location.hash.replace("#/", "#")
+    ).access_token;
+    if (accessToken) {
+      this.$router.push(`/playlist/${accessToken}`);
     }
   }
 };

@@ -33,7 +33,6 @@
 
 <script>
 import _ from "lodash";
-import queryString from "query-string";
 import axios from "axios";
 
 import TrackTable from "./TrackTable";
@@ -194,7 +193,7 @@ export default {
       return this.$route.params.playlistId;
     },
     accessToken: function() {
-      return queryString.parse(window.location.hash).access_token;
+      return this.$route.params.accessToken;
     }
   }
 };

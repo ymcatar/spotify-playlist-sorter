@@ -13,11 +13,10 @@ import SelectSort from "./components/SelectSort";
 
 const router = new VueRouter({
   base: process.env.BASE_URL,
-  mode: "history",
   routes: [
-    { path: "/", component: Authorize },
-    { path: "/playlist", component: SelectPlaylist },
-    { path: "/sort/:playlistId", component: SelectSort }
+    { path: "/playlist/:accessToken", component: SelectPlaylist },
+    { path: "/sort/:accessToken/:playlistId", component: SelectSort },
+    { path: "*", component: Authorize }
   ]
 });
 
