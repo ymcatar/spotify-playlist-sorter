@@ -51,6 +51,11 @@ export default {
       this.$router.go(-1);
     },
     getPlaylists: async function() {
+      // get the current user name
+      const currentUser = (await axios.get(`https://api.spotify.com/v1/me`, {
+        headers: { Authorization: `Bearer ${this.accessToken}` }
+      })).data;
+      // get the list of playlists
       const playlists = (await axios.get(
         "https://api.spotify.com/v1/me/playlists",
         {
@@ -58,7 +63,10 @@ export default {
         }
       )).data.items;
       this.loaded = true;
-      this.playlists = playlists;
+      // only show the playlist to which the current user is the owner of
+      this.playlists = playlists.filter(
+        item => item.owner.id == currentUser.id
+      );
     },
     onSelectPlaylist: function(playlistId) {
       this.$router.push(`/sort/${playlistId}${window.location.hash}`);
