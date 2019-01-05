@@ -33,7 +33,9 @@ export default {
     onClick: function() {
       window.location = `https://accounts.spotify.com/authorize?client_id=${
         process.env.VUE_APP_SPOTIFY_CLIENT_KEY
-      }&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fplaylist&scope=user-read-private%20user-read-email%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-private%20playlist-modify-public&response_type=token&state=123`;
+      }&redirect_uri=${encodeURIComponent(
+        window.location.origin + window.location.pathname
+      )}playlist&scope=user-read-private%20user-read-email%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-private%20playlist-modify-public&response_type=token&state=123`;
     }
   }
 };
