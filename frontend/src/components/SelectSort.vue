@@ -24,6 +24,7 @@
         :pagination.sync="pagination"
         :headers="headers"
         :items="tracks"
+        @update:pagination="onTableUpdate"
         class="elevation-1"
       >
         <template slot="items" slot-scope="props">
@@ -37,7 +38,7 @@
           <td>{{ props.item.album }}</td>
           <td>{{ props.item.popularity }}</td>
           <td>{{ props.item.addedBy }}</td>
-          <td>{{ toHumanTimestamp(props.item.addedAt).fromNow() }}</td>
+          <td>{{ toHumanTimestamp(props.item.addedAt).format('ll') }}</td>
         </template>
       </v-data-table>
     </div>
@@ -58,14 +59,14 @@ export default {
       {
         text: "#",
         value: "index",
-        width: "10px"
+        width: "5px"
       },
       {
         text: "Track Name",
         align: "left",
         sortable: true,
         value: "name",
-        width: "250px"
+        width: "300px"
       },
       { text: "Artists", value: "artists", width: "250px" },
       { text: "Album Name", value: "album", width: "250px" },
@@ -108,6 +109,9 @@ export default {
           addedBy: item.added_by.id
         };
       });
+    },
+    onTableUpdate: function(e) {
+      console.log("sorting by", e.sortBy);
     }
   },
   computed: {
