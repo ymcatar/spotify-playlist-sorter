@@ -14,7 +14,7 @@
         <template v-for="(item, index) in playlists">
           <v-list-tile :key="`playlist-tile-${index}`" avatar @click="onSelectPlaylist(item.id)">
             <v-list-tile-avatar :key="`playlist-avatar-${index}`">
-              <v-avatar color="teal">
+              <v-avatar color="teal" v-if="item.images.length > 0">
                 <img :src="item.images[0].url">
               </v-avatar>
             </v-list-tile-avatar>

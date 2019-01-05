@@ -17,7 +17,7 @@
       <v-divider></v-divider>
       <br>
       <div class="headline">
-        <v-avatar>
+        <v-avatar v-if="playlist.images.length > 0">
           <img :src="playlist.images[0].url">
         </v-avatar>&nbsp;
         <span class="font-weight-bold">{{playlist.name}}</span>
