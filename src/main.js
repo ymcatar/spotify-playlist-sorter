@@ -12,6 +12,7 @@ import SelectPlaylist from "./components/SelectPlaylist";
 import SelectSort from "./components/SelectSort";
 
 const router = new VueRouter({
+  base: process.env.BASE_URL,
   mode: "history",
   routes: [
     { path: "/", component: Authorize },
