@@ -1,6 +1,9 @@
 <template>
   <v-flex xs12 sm8 md6>
-    <div class="display-3 font-weight-bold">Spotify Playlist Sorter</div>
+    <div class="display-3 font-weight-bold app-title">Spotify
+      <br>Playlist
+      <br>Sorter
+    </div>
     <p>
       Source code:
       <a
@@ -61,5 +64,14 @@ export default {
 .v-btn.confirm-btn {
   border-radius: 20px !important;
   font-weight: bold !important;
+}
+
+.app-title {
+  line-height: 50px !important;
+  margin-bottom: 20px;
+}
+
+.container {
+  margin-top: 50px;
 }
 </style>

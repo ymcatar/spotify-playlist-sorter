@@ -5,7 +5,7 @@
     </div>
     <div v-if="loaded">
       <div class="display-3 font-weight-bold">
-        <a @click="goBack">←</a>&nbsp;Select a playlist
+        <a @click="goBack">←</a>&nbsp;Playlist
       </div>
       <br>
       <v-divider></v-divider>

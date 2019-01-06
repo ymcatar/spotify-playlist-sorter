@@ -3,7 +3,7 @@
     <div v-if="!loaded">
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
     </div>
-    <div v-if="loaded">
+    <div v-if="loaded" class="select-sort-container">
       <!-- confirm button -->
       <v-btn color="primary" @click="submit" dark fixed bottom right fab>
         <v-icon v-if="!updating">check</v-icon>
@@ -11,7 +11,7 @@
       </v-btn>
       <div class="display-3 font-weight-bold">
         <a @click="goBack">←</a>&nbsp;
-        Select a sort order
+        Sort
       </div>
       <br>
       <v-divider></v-divider>
@@ -22,8 +22,6 @@
         </v-avatar>&nbsp;
         <span class="font-weight-bold">{{playlist.name}}</span>
       </div>
-      <br>
-      <v-divider></v-divider>
       <br>
       <p>Click the table header to apply your sorting and hit the confirm button in the bottom right corner.</p>
       <ul>
@@ -232,3 +230,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.select-sort-container {
+  padding-bottom: 60px;
+}
+</style>
