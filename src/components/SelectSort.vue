@@ -25,7 +25,30 @@
       <br>
       <v-divider></v-divider>
       <br>
-      <p>Apply your sorting and hit the confirm button in the bottom right corner.</p>
+      <p>Click the table header to apply your sorting and hit the confirm button in the bottom right corner.</p>
+      <ul>
+        <li>
+          <b>Acousticness:</b> the higher the value, the more acoustic the track is;
+        </li>
+        <li>
+          <b>Dancability:</b> the higher the value, the more danceable the track is (i.e. higher beat strength, rhythm stability, etc.);
+        </li>
+        <li>
+          <b>Energy:</b> the higher the value, the more intense / noisy / loud the track is;
+        </li>
+        <li>
+          <b>Instrumentalness:</b> the higher the value, the more vocal content the track has ("ooh" and "aah" sounds are exclued);
+        </li>
+        <li>
+          <b>Liveness:</b> the higher the value, the more likely the track is a live recording;
+        </li>
+        <li>
+          <b>Valence:</b> the higher the value, the more postive the modd the track is (i.e. happy, cheerful, etc);
+        </li>
+      </ul>
+      <br>You might need to scroll the table horizontally to see all the columns.
+      <br>
+      <br>
       <track-table :items="tracks" :pagination.sync="pagination"></track-table>
     </div>
   </v-flex>
@@ -93,6 +116,7 @@ export default {
               album: item.track.album.name,
               artists: item.track.artists.map(i => i.name).join(", "),
               name: item.track.name,
+              releaseDate: item.track.album.release_date,
               addedAt: item.added_at,
               addedBy: item.added_by.id
             },

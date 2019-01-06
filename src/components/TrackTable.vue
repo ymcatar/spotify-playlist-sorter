@@ -5,7 +5,6 @@
     :items="items"
     class="elevation-1"
     must-sort
-    hide-actions
     @update:pagination="onChange"
   >
     <template slot="items" slot-scope="props">
@@ -19,14 +18,15 @@
         <b>{{ props.item.metadata.name }}</b>
       </td>
       <td>{{ props.item.metadata.artists }}</td>
-      <!-- <td>{{ props.item.metadata.album }}</td> -->
+      <td>{{ props.item.metadata.releaseDate }}</td>
+      <td>{{ props.item.metadata.album }}</td>
       <!-- metadata end -->
       <!-- feature start -->
       <td class="text-xs-right">{{ toHumanDuration(props.item.features.duration_ms) }}</td>
       <td class="text-xs-right">{{ props.item.features.acousticness }}</td>
       <td class="text-xs-right">{{ props.item.features.danceability }}</td>
       <td class="text-xs-right">{{ props.item.features.energy }}</td>
-      <!-- <td class="text-xs-right">{{ props.item.features.instrumentalness }}</td> -->
+      <td class="text-xs-right">{{ props.item.features.instrumentalness }}</td>
       <td class="text-xs-right">{{ props.item.features.liveness }}</td>
       <td class="text-xs-right">{{ props.item.features.tempo }}</td>
       <td class="text-xs-right">{{ props.item.features.valence }}</td>
@@ -44,7 +44,7 @@ export default {
   props: ["items"],
   data: () => ({
     pagination: {
-      rowsPerPage: -1
+      rowsPerPage: 10
     },
     headers: [
       {
@@ -52,22 +52,27 @@ export default {
         value: "metadata.index"
       },
       { text: "Added by", value: "metadata.addedBy" },
-      { text: "Date", value: "metadata.addedAt" },
+      { text: "Added Date", value: "metadata.addedAt" },
       {
         text: "Track Name",
         align: "left",
-        sortable: true,
         value: "metadata.name"
       },
+
       // metadata
       { text: "Artists", value: "metadata.artists" },
-      // { text: "Album Name", value: "metadata.album" },
+      { text: "Release Date", value: "metadata.releaseDate" },
+      { text: "Album Name", value: "metadata.album" },
       // features
       { text: "Duration", value: "features.duration_ms", align: "right" },
       { text: "Acousticness", value: "features.acousticness", align: "right" },
       { text: "Danceability", value: "features.danceability", align: "right" },
       { text: "Energy", value: "features.energy", align: "right" },
-      // { text: "Instrumentalness", value: "features.instrumentalness", align: "right" },
+      {
+        text: "Instrumentalness",
+        value: "features.instrumentalness",
+        align: "right"
+      },
       { text: "Liveness", value: "features.liveness", align: "right" },
       { text: "Tempo", value: "features.tempo", align: "right" },
       { text: "Valence", value: "features.valence", align: "right" }
