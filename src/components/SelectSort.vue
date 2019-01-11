@@ -172,12 +172,13 @@ export default {
             a = _.get(a, sortBy);
             b = _.get(b, sortBy);
             if (_.isString(a)) {
-              return descending ? b.localeCompare(a) : b.localeCompare(a);
+              return descending ? b.localeCompare(a) : a.localeCompare(b);
             } else {
               return descending ? b - a : a - b;
             }
           })
           .map(i => i.metadata.id);
+
         // gather all the deltas
         let todoIds = _.clone(newTrackIds);
         let lastSnapshotId = null;
