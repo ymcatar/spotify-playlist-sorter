@@ -13,16 +13,16 @@
         <a @click="goBack">←</a>&nbsp;
         Sort
       </div>
-      <br>
+      <br />
       <v-divider></v-divider>
-      <br>
+      <br />
       <div class="headline">
         <v-avatar v-if="playlist.images.length > 0">
-          <img :src="playlist.images[0].url">
+          <img :src="playlist.images[0].url" />
         </v-avatar>&nbsp;
         <span class="font-weight-bold">{{playlist.name}}</span>
       </div>
-      <br>
+      <br />
       <p>Click the table header to apply your sorting and hit the confirm button in the bottom right corner.</p>
       <ul>
         <li>
@@ -44,9 +44,9 @@
           <b>Valence:</b> the higher the value, the more postive the modd the track is (i.e. happy, cheerful, etc);
         </li>
       </ul>
-      <br>You might need to scroll the table horizontally to see all the columns.
-      <br>
-      <br>
+      <br />You might need to scroll the table horizontally to see all the columns.
+      <br />
+      <br />
       <track-table :items="tracks" :pagination.sync="pagination"></track-table>
     </div>
   </v-flex>
@@ -140,6 +140,9 @@ export default {
         ); // flatten the response
         // merge the feature info to the tracks
         tracksWithFeatures.forEach((item, i) => {
+          if (item === null) {
+            return;
+          }
           this.tracks[i].features = _(item)
             .pick([
               "acousticness",

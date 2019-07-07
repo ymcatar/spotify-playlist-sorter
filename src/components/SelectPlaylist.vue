@@ -7,15 +7,15 @@
       <div class="display-3 font-weight-bold">
         <a @click="goBack">←</a>&nbsp;Playlist
       </div>
-      <br>
+      <br />
       <v-divider></v-divider>
-      <br>
+      <br />
       <v-list two-line>
         <template v-for="(item, index) in playlists">
           <v-list-tile :key="`playlist-tile-${index}`" avatar @click="onSelectPlaylist(item.id)">
             <v-list-tile-avatar :key="`playlist-avatar-${index}`">
               <v-avatar color="teal" v-if="item.images.length > 0">
-                <img :src="item.images[0].url">
+                <img :src="item.images[0].url" />
               </v-avatar>
             </v-list-tile-avatar>
             <v-list-tile-content>
@@ -68,6 +68,7 @@ export default {
           item => item.owner.id == currentUser.id
         );
       } catch (e) {
+        console.error(e);
         alert("Unexpected problem, please try again.");
         this.$router.push("/");
       }
