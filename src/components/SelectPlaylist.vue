@@ -68,7 +68,6 @@ export default {
           item => item.owner.id == currentUser.id
         );
       } catch (e) {
-        console.error(e);
         alert("Unexpected problem, please try again.");
         this.$router.push("/");
       }
